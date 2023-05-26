@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""A heartbeat service periodically pinging all workers.
+"""
+A heartbeat service periodically pinging all workers.
 
 In normal cases, all workers will exchange the same randomly generated number
 until normal program termination. If any worker stops or restarts, other workers
@@ -135,6 +136,7 @@ def start(period: int) -> threading.Event:
       task=task_id,
       device_type='CPU',
       device_index=0)
+    
   # Always use 0 for group and instance keys to reduce unnecessary
   # collective hangs and simplify failure analysis. This also avoid
   # collision with normal collectives.
